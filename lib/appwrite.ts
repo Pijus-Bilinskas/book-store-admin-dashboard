@@ -8,7 +8,7 @@ client
 
 const databases = new Databases(client);
 
-export const fetchProducts = async (queries : string[]) => {
+export const fetchProducts = async (queries : string[]): Promise<ProductType[]> => {
       const response = await databases.listDocuments(
             `${process.env.NEXT_PUBLIC_DATABASE_ID}`,
             `${process.env.NEXT_PUBLIC_COLLECTION_ID}`,
