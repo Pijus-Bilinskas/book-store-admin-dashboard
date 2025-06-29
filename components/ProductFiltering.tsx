@@ -1,6 +1,7 @@
 "use client"
 
 import { fetchProducts } from '@/lib/appwrite';
+import { ProductType } from '@/types/product';
 import { Query } from 'appwrite';
 import React, { useEffect, useState } from 'react'
 
@@ -9,7 +10,7 @@ const ProductFiltering = () => {
     const [debouncedSearch, setDebouncedSearch] = useState("");
     const [stock, setStock] = useState("");
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<ProductType[]>([]);
 
     useEffect(() => {
       const handler = setTimeout(() => {
@@ -22,7 +23,7 @@ const ProductFiltering = () => {
 
     useEffect(() => {
         const run = async () => {
-            let queries = [];
+            const queries = [];
 
             if(debouncedSearch) queries.push(Query.search("title", debouncedSearch));
 
@@ -77,7 +78,7 @@ const ProductFiltering = () => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product: any) => (
+          {products.map((product: ProductType) => (
             <tr key={product.$id} className="border-t">
               <td className="p-2">{product.title}</td>
               <td className="p-2">${product.price}</td>

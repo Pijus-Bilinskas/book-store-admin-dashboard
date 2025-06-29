@@ -1,12 +1,7 @@
+import { ProductType } from "@/types/product";
 
-interface Product {
-  title: string;
-  category: string;
-  sales: number;
-  price: number;
-}
 
-const TopProducts = ({products}: {products: Product[]}) => {
+const TopProducts = ({products}: {products: ProductType[]}) => {
     const topProducts = [...products]
     .sort((a, b) => (b.sales ?? 0) - (a.sales ?? 0))
     .slice(0, 5);

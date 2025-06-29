@@ -2,8 +2,11 @@ import React from 'react'
 import KPISummary from './KPISummary'
 import TopProducts from './TopProducts';
 import ProductTimelineChart from './ProductTimelineChart';
+import { ProductType } from '@/types/product';
 
-const Dashboard = ({products}) => {
+
+
+const Dashboard = ({products}: {products: ProductType[]}) => {
     const totalProducts = products.length;
     const totalStock = products.reduce((sum, p) => sum + (p.stock || 0), 0);
     const totalSales = products.reduce((sum, p) => sum + (p.sales || 0) * (p.price || 0), 0).toFixed(2);

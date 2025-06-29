@@ -2,13 +2,10 @@
 
 import { BarChart, Bar, XAxis, ResponsiveContainer, Tooltip, YAxis } from "recharts"
 import { format, parseISO } from "date-fns";
-
-interface Product {
-    createdAt: string;
-}
+import { ProductType } from "@/types/product";
 
 
-const ProductTimelineChart = ({products}: {products: Product[] }) => {
+const ProductTimelineChart = ({products}: {products: ProductType[] }) => {
 
     const monthlyCounts: { [key: string]: number } = {}
 
